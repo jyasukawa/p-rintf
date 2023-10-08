@@ -2,6 +2,11 @@
 
 void	ft_putchar_count(int c, int *count)
 {
+	if (*count == INT_MAX || *count == -1)
+	{
+		*count = -1;
+		return ;
+	}
 	write(1, &c, 1);
 	(*count)++;
 }
@@ -13,8 +18,7 @@ void	ft_putstr_count(char *s, int *count)
 	i = 0;
 	if (s == NULL)
 	{
-		write(1, "(null)", 6);
-		*count = *count + 6;
+		ft_putstr_count("(null)", count);
 		return ;
 	}
 	while (s[i])
